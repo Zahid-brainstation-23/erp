@@ -1,7 +1,9 @@
 package com.brainstation23.erp.controller.rest;
 
 import com.brainstation23.erp.mapper.UserMapper;
-import com.brainstation23.erp.model.dto.*;
+import com.brainstation23.erp.model.dto.user.CreateUserRequest;
+import com.brainstation23.erp.model.dto.user.UpdateUserRequest;
+import com.brainstation23.erp.model.dto.user.UserResponse;
 import com.brainstation23.erp.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

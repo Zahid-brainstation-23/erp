@@ -1,4 +1,4 @@
-package com.brainstation23.erp.model.dto;
+package com.brainstation23.erp.model.dto.user;
 
 import com.brainstation23.erp.constant.UserRole;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -6,13 +6,15 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.UUID;
 
 @ToString
 @Getter
 @Setter
+public class UserResponse {
 
-public class UpdateUserRequest {
-
+    @Schema(description = "User ID", example = "3F41A301-25ED-4F0F-876F-7657BEABB00F")
+    private UUID id;
 
     @Schema(description = "User First Name", example = "Zahid")
     private String firstName;
@@ -24,8 +26,6 @@ public class UpdateUserRequest {
     @Schema(description = "User Email", example = "zahid@gmail.com")
     private String email;
 
-    @Schema(description = "User Password", example = "z12@89#10")
-    private String password;
 
     @Schema(description = "User Salary", example = "10000.00")
     private double salary;

@@ -1,4 +1,4 @@
-package com.brainstation23.erp.model.dto;
+package com.brainstation23.erp.model.dto.user;
 
 
 import com.brainstation23.erp.constant.UserRole;

@@ -2,9 +2,9 @@ package com.brainstation23.erp.controller.rest;
 
 
 import com.brainstation23.erp.mapper.OrganizationMapper;
-import com.brainstation23.erp.model.dto.CreateOrganizationRequest;
-import com.brainstation23.erp.model.dto.OrganizationResponse;
-import com.brainstation23.erp.model.dto.UpdateOrganizationRequest;
+import com.brainstation23.erp.model.dto.organization.CreateOrganizationRequest;
+import com.brainstation23.erp.model.dto.organization.OrganizationResponse;
+import com.brainstation23.erp.model.dto.organization.UpdateOrganizationRequest;
 import com.brainstation23.erp.service.OrganizationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
