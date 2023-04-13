@@ -1,4 +1,4 @@
-package com.brainstation23.erp.persistence;
+package com.brainstation23.erp.constant;
 
 public enum UserRole {
     ADMIN,EMPLOYEE;
