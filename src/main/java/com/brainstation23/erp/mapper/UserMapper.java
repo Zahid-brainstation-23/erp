@@ -10,6 +10,6 @@ import org.mapstruct.Mapper;
 public interface UserMapper {
     User entityToDomain(UserEntity entity);
 
-    UserResponse domainToResponse(User organization);
+    UserResponse domainToResponse(User user);
 
 }
