@@ -27,8 +27,8 @@ public class UserResponse {
     private String email;
 
 
-    @Schema(description = "User Salary", example = "10000.00")
-    private double salary;
+    @Schema(description = "User Account Balance", example = "10000.00")
+    private double balance;
 
     @Schema(description = "User Role", example = "ADMIN/EMPLOYEE")
     private UserRole userRole;

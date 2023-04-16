@@ -28,6 +28,6 @@ public class UserEntity {
     private String lastName;
     private String email;
     private String password;
-    private double salary;
+    private double balance;
     private UserRole userRole;
 }

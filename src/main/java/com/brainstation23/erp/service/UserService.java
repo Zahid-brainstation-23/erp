@@ -40,7 +40,7 @@ public class UserService {
                 .setLastName(createRequest.getLastName())
                 .setEmail(createRequest.getEmail())
                 .setPassword(createRequest.getPassword())
-                .setSalary(createRequest.getSalary())
+                .setBalance(createRequest.getBalance())
                 .setUserRole(createRequest.getUserRole());
         var createdEntity = userRepository.save(entity);
         return createdEntity.getId();
@@ -53,7 +53,7 @@ public class UserService {
                 .setLastName(updateRequest.getLastName())
                 .setEmail(updateRequest.getEmail())
                 .setPassword(updateRequest.getPassword())
-                .setSalary(updateRequest.getSalary())
+                .setBalance(updateRequest.getBalance())
                 .setUserRole(updateRequest.getUserRole());
         userRepository.save(entity);
     }
