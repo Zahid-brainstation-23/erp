@@ -31,8 +31,8 @@ public class UserResponse {
     @Schema(description = "User Account Balance", example = "10000.00")
     private double balance;
 
-    @Schema(description = "Organization ID", example = " id: d4f4927d-1097-465e-9879-812eedfa1c9d" +
-            " name: Brain Station 23" +
+    @Schema(description = "Organization ID", example = " id: d4f4927d-1097-465e-9879-812eedfa1c9d," +
+            " name: Brain Station 23," +
             " code: JC68VA")
     private OrganizationEntity organization;
 
