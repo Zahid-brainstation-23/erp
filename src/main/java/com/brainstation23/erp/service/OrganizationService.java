@@ -35,6 +35,7 @@ public class OrganizationService {
 		return organizationMapper.entityToDomain(entity);
 	}
 
+
 	public UUID createOne(CreateOrganizationRequest createRequest) {
 		var entity = new OrganizationEntity();
 		entity.setId(UUID.randomUUID())

@@ -2,9 +2,11 @@ package com.brainstation23.erp.service;
 
 import com.brainstation23.erp.exception.custom.custom.NotFoundException;
 import com.brainstation23.erp.mapper.UserMapper;
+import com.brainstation23.erp.model.domain.Organization;
 import com.brainstation23.erp.model.domain.User;
 import com.brainstation23.erp.model.dto.user.CreateUserRequest;
 import com.brainstation23.erp.model.dto.user.UpdateUserRequest;
+import com.brainstation23.erp.persistence.entity.OrganizationEntity;
 import com.brainstation23.erp.persistence.entity.UserEntity;
 import com.brainstation23.erp.persistence.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,18 +24,33 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
+    private final OrganizationService organizationService;
+
     public Page<User> getAll(Pageable pageable) {
         var entities = userRepository.findAll(pageable);
+
         return entities.map(userMapper::entityToDomain);
     }
 
     public User getOne(UUID id) {
         var entity = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND));
+
+        //Organization organization =  organizationService.getOne(entity.getOrganization().getId());
+      //  OrganizationEntity organizationEntity = new OrganizationEntity(organization.getId(),
+          //      organization.getName(),organization.getCode());
+
+    //    entity.setO(organizationEntity);
         return userMapper.entityToDomain(entity);
     }
 
     public UUID createOne(CreateUserRequest createRequest) {
+
+        Organization organization =  organizationService.getOne(createRequest.getOrganizationId());
+        OrganizationEntity organizationEntity = new OrganizationEntity(organization.getId(),
+                organization.getName(),organization.getCode());
+
+
         var entity = new UserEntity();
         entity.setId(UUID.randomUUID())
                 .setFirstName(createRequest.getFirstName())
@@ -41,6 +58,7 @@ public class UserService {
                 .setEmail(createRequest.getEmail())
                 .setPassword(createRequest.getPassword())
                 .setBalance(createRequest.getBalance())
+                .setOrganization(organizationEntity)
                 .setUserRole(createRequest.getUserRole());
         var createdEntity = userRepository.save(entity);
         return createdEntity.getId();

@@ -2,21 +2,19 @@ package com.brainstation23.erp.model.dto.user;
 
 
 import com.brainstation23.erp.constant.UserRole;
+import com.brainstation23.erp.persistence.entity.OrganizationEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.UUID;
 
 
 @ToString
 @Getter
 @Setter
 public class CreateUserRequest {
-
-
-
-
-
 
     @Schema(description = "User First Name", example = "Zahid")
     private String firstName;
@@ -34,6 +32,11 @@ public class CreateUserRequest {
     @Schema(description = "User Account Balance", example = "10000.00")
     private double balance;
 
+
+    @Schema(description = "Organization ID", example = "3F41A301-25ED-4F0F-876F-7657BEABB00F")
+    private UUID organizationId;
+
     @Schema(description = "User Role", example = "ADMIN/EMPLOYEE")
     private UserRole userRole;
+
 }

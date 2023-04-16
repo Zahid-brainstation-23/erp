@@ -2,6 +2,8 @@ package com.brainstation23.erp.model.domain;
 
 
 import com.brainstation23.erp.constant.UserRole;
+import com.brainstation23.erp.persistence.entity.OrganizationEntity;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,5 +21,7 @@ public class User {
     private String lastName;
     private String email;
     private double balance;
+    private OrganizationEntity organization;
     private UserRole userRole;
+
 }
