@@ -49,7 +49,7 @@ As an Employee user, I can
 - [ ] Global Exception Handler
 - [x] Implement JPA Auditing
 - [ ] Write Unit Test
-- [ ] Setup different database driver in different profile
+- [x] Setup different database driver in different profile
 - [ ] Upgrade to Spring Boot 3
 - [ ] Deployment (profile: develop)
 - [ ] Update Documentation (README.md)
