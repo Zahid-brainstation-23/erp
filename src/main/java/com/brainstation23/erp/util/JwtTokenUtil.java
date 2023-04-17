@@ -5,7 +5,6 @@ import java.util.function.Function;
 
 import com.brainstation23.erp.persistence.entity.UserEntity;
 import io.jsonwebtoken.Claims;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Jwts;
@@ -15,8 +14,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtTokenUtil {
     private static final long EXPIRE_DURATION = 24 * 60 * 60 * 1000; // 24 hour
 
-    @Value("secret_key")
-    private String SECRET_KEY;
+    private String SECRET_KEY ="secretkey";
 
     public String generateAccessToken(UserEntity user) {
 
