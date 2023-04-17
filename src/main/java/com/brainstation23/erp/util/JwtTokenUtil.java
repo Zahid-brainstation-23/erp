@@ -18,7 +18,7 @@ public class JwtTokenUtil {
 
     public String generateAccessToken(UserEntity user) {
         return Jwts.builder()
-                .setSubject(user.getId().toString())
+                .setSubject(user.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
@@ -26,7 +26,7 @@ public class JwtTokenUtil {
 
     }
 
-    public String extractUserId(String token) {
+    public String extractUserEmail(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -46,7 +46,7 @@ public class JwtTokenUtil {
     }
 
     public Boolean validateToken(String token, UserEntity userDetails) {
-        final String userId = extractUserId(token);
-        return (userId.equals(userDetails.getId()) && !isTokenExpired(token));
+        final String userEmail = extractUserEmail(token);
+        return (userEmail.equals(userDetails.getEmail()) && !isTokenExpired(token));
     }
 }
