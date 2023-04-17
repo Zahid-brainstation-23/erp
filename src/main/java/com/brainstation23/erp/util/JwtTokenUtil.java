@@ -5,7 +5,6 @@ import java.util.function.Function;
 
 import com.brainstation23.erp.persistence.entity.UserEntity;
 import io.jsonwebtoken.Claims;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Jwts;
