@@ -35,12 +35,6 @@ public class UserService {
     public User getOne(UUID id) {
         var entity = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(USER_NOT_FOUND));
-
-        //Organization organization =  organizationService.getOne(entity.getOrganization().getId());
-      //  OrganizationEntity organizationEntity = new OrganizationEntity(organization.getId(),
-          //      organization.getName(),organization.getCode());
-
-    //    entity.setO(organizationEntity);
         return userMapper.entityToDomain(entity);
     }
 
