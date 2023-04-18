@@ -14,7 +14,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtTokenUtil {
     private static final long EXPIRE_DURATION = 24 * 60 * 60 * 1000; // 24 hour
 
-    private String SECRET_KEY ="secretkey";
+    private final String  SECRET_KEY ="secretkey";
 
     public String generateAccessToken(UserEntity user) {
 
@@ -23,7 +23,7 @@ public class JwtTokenUtil {
                 .setSubject(user.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
-                .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
+                .signWith(SignatureAlgorithm.HS512, SECRET_KEY.getBytes())
                 .compact();
 
     }

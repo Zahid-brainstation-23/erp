@@ -31,7 +31,7 @@ public class OrganizationRestController {
 
 	@Operation(summary = "Get All Organizations")
 	@GetMapping
-	public ResponseEntity<Page<OrganizationResponse>> getAll(@ParameterObject Pageable pageable) {
+	public ResponseEntity<Page<OrganizationResponse>> getAll(@ParameterObject Pageable pageable,@RequestHeader(value = "value", required = true) String authHeader) {
 		log.info("Getting List of Organizations");
 		var domains = organizationService.getAll(pageable);
 		return ResponseEntity.ok(domains.map(organizationMapper::domainToResponse));
@@ -39,7 +39,7 @@ public class OrganizationRestController {
 
 	@Operation(summary = "Get Single Organization")
 	@GetMapping("{id}")
-	public ResponseEntity<OrganizationResponse> getOne(@PathVariable UUID id) {
+	public ResponseEntity<OrganizationResponse> getOne(@PathVariable UUID id,@RequestHeader(value = "value", required = true) String authHeader) {
 		log.info("Getting Details of Organization({})", id);
 		var domain = organizationService.getOne(id);
 		return ResponseEntity.ok(organizationMapper.domainToResponse(domain));
@@ -47,7 +47,7 @@ public class OrganizationRestController {
 
 	@Operation(summary = "Create Single Organization")
 	@PostMapping
-	public ResponseEntity<Void> createOne(@RequestBody @Valid CreateOrganizationRequest createRequest, @RequestHeader(value = "value", required = true) String authHeader) {
+	public ResponseEntity<Void> createOne(@RequestBody @Valid CreateOrganizationRequest createRequest) {
 		log.info("Creating an Organization: {} ", createRequest);
 		var id = organizationService.createOne(createRequest);
 		var location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
