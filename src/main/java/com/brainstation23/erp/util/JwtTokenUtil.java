@@ -19,6 +19,7 @@ public class JwtTokenUtil {
     public String generateAccessToken(UserEntity user) {
 
         return Jwts.builder()
+                .claim("role", user.getUserRole())
                 .setSubject(user.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))
