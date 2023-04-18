@@ -38,14 +38,14 @@ As an Employee user, I can
    - [ ] /employees
 - [ ] REST API
    - [x] /api/login (JWT)
-   - [ ] /api/signup (public)
-   - [ ] /api/users (secured, authorized to ADMIN only)
+   - [x] /api/signup (public)
+   - [x] /api/users (secured, authorized to ADMIN only)
    - [ ] /api/roles (secured, authorized to ADMIN only)
    - [X] /api/organization (secured, authorized to ADMIN for CRUD, VIEW for EMPLOYEE)
 - [x] API Doc: Swagger
 - [x] Mapper: Mapstruct
 - [x] Code Formatter: Spotless
-- [ ] Apply Spring Security
+- [x] Apply Spring Security
 - [x] Global Exception Handler
 - [x] Implement JPA Auditing
 - [ ] Write Unit Test
