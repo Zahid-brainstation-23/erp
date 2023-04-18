@@ -1,5 +1,6 @@
 package com.brainstation23.erp.aop;
 
+
 import com.brainstation23.erp.exception.custom.custom.UnauthorizedAccessException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -11,13 +12,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-
 @Aspect
 @Component
-public class BeforeOrganizationRestControllerMethods {
+public class BeforeUserRestControllerMethods {
     private final String SECRET_KEY = "secretkey";
 
-    @Before("execution(* com.brainstation23.erp.controller.rest.OrganizationRestController.*(..))")
+    @Before("execution(* com.brainstation23.erp.controller.rest.UserRestController.*(..))")
     public void verifyAuthoriztionFromJwtToken(JoinPoint joinPoint) throws Exception {
         Object[] args = joinPoint.getArgs();
         MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
@@ -36,7 +36,6 @@ public class BeforeOrganizationRestControllerMethods {
         }catch (Exception e){
             throw  new Exception("Invalid JWT Token");
         }
-
 
         String role = (String) claims.get("role");
         if(!role.equalsIgnoreCase("ADMIN")){

@@ -30,7 +30,7 @@ public class UserRestController {
 
     @Operation(summary = "Get All Users")
     @GetMapping
-    public ResponseEntity<Page<UserResponse>> getAll(@ParameterObject Pageable pageable) {
+    public ResponseEntity<Page<UserResponse>> getAll(@ParameterObject Pageable pageable,@RequestHeader(value = "value", required = true) String authHeader) {
         log.info("Getting List of Users");
         var domains = userService.getAll(pageable);
         return ResponseEntity.ok(domains.map(userMapper::domainToResponse));
@@ -38,7 +38,7 @@ public class UserRestController {
 
     @Operation(summary = "Get Single User")
     @GetMapping("{id}")
-    public ResponseEntity<UserResponse> getOne(@PathVariable UUID id) {
+    public ResponseEntity<UserResponse> getOne(@PathVariable UUID id,@RequestHeader(value = "value", required = true) String authHeader) {
         log.info("Getting Details of User({})", id);
         var domain = userService.getOne(id);
         return ResponseEntity.ok(userMapper.domainToResponse(domain));
@@ -56,7 +56,7 @@ public class UserRestController {
     @Operation(summary = "Update Single User")
     @PutMapping("{id}")
     public ResponseEntity<Void> updateOne(@PathVariable UUID id,
-                                          @RequestBody @Valid UpdateUserRequest updateRequest) {
+                                          @RequestBody @Valid UpdateUserRequest updateRequest,@RequestHeader(value = "value", required = true) String authHeader) {
         log.info("Updating an User({}): {} ", id, updateRequest);
         userService.updateOne(id, updateRequest);
         return ResponseEntity.noContent().build();
@@ -64,7 +64,7 @@ public class UserRestController {
 
     @Operation(summary = "Delete Single User")
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteOne(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteOne(@PathVariable UUID id,@RequestHeader(value = "value", required = true) String authHeader) {
         log.info("Deleting an User({}) ", id);
         userService.deleteOne(id);
         return ResponseEntity.noContent().build();
