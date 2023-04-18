@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-	// TODO: handle exceptions globally
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleRootException(Exception exception){

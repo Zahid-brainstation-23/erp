@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserLoginController {
 
-    @Autowired
-    private LoginService loginService;
+    //@Autowired
+    private final LoginService loginService;
 
     @PostMapping
     public ResponseEntity<String> login(@RequestParam(name  ="email") String email,  @RequestParam(name = "password") String password){

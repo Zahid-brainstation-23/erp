@@ -50,7 +50,7 @@ public class UserService {
                 .setFirstName(createRequest.getFirstName())
                 .setLastName(createRequest.getLastName())
                 .setEmail(createRequest.getEmail())
-                .setPassword(createRequest.getPassword())
+                .setPassword(createRequest.getPassword()) // TODO: Apply encryption
                 .setBalance(createRequest.getBalance())
                 .setOrganization(organizationEntity)
                 .setUserRole(createRequest.getUserRole());
