@@ -19,12 +19,12 @@ public class BeforeOrganizationRestControllerMethods {
         Object[] args = joinPoint.getArgs();
         MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
         String[] parametersName = methodSig.getParameterNames();
-        int idx = Arrays.asList(parametersName).indexOf("token");
-        if(!(args.length > idx)){
+        int idx = Arrays.asList(parametersName).indexOf("authHeader");
+        if(!(args.length > idx) || idx<0){
             return;
         }
-        String token = args[idx].toString();
-        System.out.println(token);
+        String authHeader = args[idx].toString();
+        String token = authHeader.substring(7);
 
     }
 }
