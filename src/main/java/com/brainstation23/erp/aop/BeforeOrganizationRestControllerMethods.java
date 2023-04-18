@@ -20,7 +20,11 @@ public class BeforeOrganizationRestControllerMethods {
         MethodSignature methodSig = (MethodSignature) joinPoint.getSignature();
         String[] parametersName = methodSig.getParameterNames();
         int idx = Arrays.asList(parametersName).indexOf("token");
-        System.out.println(args[idx]);
+        if(!(args.length > idx)){
+            return;
+        }
+        String token = args[idx].toString();
+        System.out.println(token);
 
     }
 }

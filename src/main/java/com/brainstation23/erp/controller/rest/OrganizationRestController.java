@@ -48,7 +48,6 @@ public class OrganizationRestController {
 	@Operation(summary = "Create Single Organization")
 	@PostMapping
 	public ResponseEntity<Void> createOne(@RequestBody @Valid CreateOrganizationRequest createRequest, @RequestHeader(value = "value", required = true) String token) {
-		System.out.println("creating");
 		log.info("Creating an Organization: {} ", createRequest);
 		var id = organizationService.createOne(createRequest);
 		var location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(id).toUri();
@@ -58,7 +57,7 @@ public class OrganizationRestController {
 	@Operation(summary = "Update Single Organization")
 	@PutMapping("{id}")
 	public ResponseEntity<Void> updateOne(@PathVariable UUID id,
-										  @RequestBody @Valid UpdateOrganizationRequest updateRequest) {
+										  @RequestBody @Valid UpdateOrganizationRequest updateRequest,@RequestHeader(value = "value", required = true) String token) {
 		log.info("Updating an Organization({}): {} ", id, updateRequest);
 		organizationService.updateOne(id, updateRequest);
 		return ResponseEntity.noContent().build();
@@ -66,7 +65,7 @@ public class OrganizationRestController {
 
 	@Operation(summary = "Delete Single Organization")
 	@DeleteMapping("{id}")
-	public ResponseEntity<Void> deleteOne(@PathVariable UUID id) {
+	public ResponseEntity<Void> deleteOne(@PathVariable UUID id,@RequestHeader(value = "value", required = true) String token) {
 		log.info("Deleting an Organization({}) ", id);
 		organizationService.deleteOne(id);
 		return ResponseEntity.noContent().build();
