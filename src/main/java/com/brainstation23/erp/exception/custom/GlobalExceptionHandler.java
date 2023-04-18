@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @Slf4j
 public class GlobalExceptionHandler {
 	// TODO: handle exceptions globally
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleRootException(Exception exception){
+        return new ResponseEntity<String>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<String> handleNotFound(NotFoundException notFoundException){
        return new ResponseEntity<String>(notFoundException.getMessage(), HttpStatus.NOT_FOUND);
